@@ -1,8 +1,17 @@
+:root {
+    --background: #ffffff;
+    --text: #000000;
+    --switch-off: #000000;
+    --switch-on: #ffffff;
+  }
+
 body {
     font-family: monospace;
-    background-color: whitesmoke;
+    background-color: var(--background);
+    color: var(--text);
     margin: 0;
     padding: 0;
+    transition: background-color 0.5s ease;
 }
 
 /*
@@ -29,6 +38,10 @@ body {
     text-align: left;
 }
 
+.top-content p {
+    font-size: 2rem;
+}
+
 .flex-container {
     display: flex;
 }
@@ -36,11 +49,12 @@ body {
     flex: 1;
     padding: 1rem;
     box-sizing: border-box;
-    border: 3px solid #000000;
+    border: 3px solid var(--text);
+    font-size: 2rem;
 }
 
-.column p {
-    font-size: 2rem;
+.column ul {
+    font-size: 1.5rem;
 }
 
 .column:last-child {
@@ -48,8 +62,86 @@ body {
 }
 
 .diagonal-bkg {
-    background-color: #e5e5f7;
+    background-color: var(--background);
     opacity: 0.8;
     background-size: 10px 10px;
-    background-image: repeating-linear-gradient(135deg, #8a8a8a 0, #8a8a8a 1px, #e5e5f7 0, #e5e5f7 50%);
+    background-image: repeating-linear-gradient(135deg, var(--text) 0, var(--text) 1px, var(--background) 0, var(--background) 50%);
 }
+
+.banner {
+    background-color: var(--background);
+    border: 3px solid var(--text);
+    margin: 2rem;
+    padding: 2rem;
+}
+
+.banner-center {
+    background-color: var(--background);
+    border: 3px solid var(--text);
+    width: 30%;
+    padding: 1rem;
+}
+
+.banner-heading {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.mid-content {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5rem;
+}
+
+/* Dark Mode CSS */
+.switch {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1000;
+    display: inline-block;
+    width: 60px;
+    height: 20px;
+    margin-bottom: 2rem;
+}
+  
+.switch input {
+    display: none;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--text);
+    transition: 0.4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: '';
+    height: 12px;
+    width: 12px;
+    left: 4px;
+    bottom: 4px;
+    background-color: var(--background);
+    transition: 0.4s;
+}
+
+input:checked + .slider {
+    background-color: var(--text);
+}
+
+input:checked + .slider:before {
+    transform: translateX(40px);
+}
+/*
+body.dark-mode {
+    background-color: #000000;
+    color: #fff;
+}
+*/
