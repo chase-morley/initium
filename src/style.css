@@ -3,6 +3,7 @@
     --text: #000000;
     --switch-off: #000000;
     --switch-on: #ffffff;
+    --mono-accent: #777777;
   }
 
 body {
@@ -38,6 +39,10 @@ body {
     margin-bottom: 2rem;
 }
 
+.top-margin {
+    margin-top: 6rem;
+}
+
 .content-update {
     padding: 2rem;
     border: 3px solid var(--text);
@@ -63,11 +68,20 @@ body {
     font-size: 2rem;
 }
 
+.content-body {
+    width: 90%;
+    margin: auto;
+    border: none;
+    font-size: 2rem;
+}
+
 .flex-container {
     display: flex;
+    margin-bottom: 2rem;
 }
 .column {
     flex: 1;
+    width: 50%;
     padding: 0.5rem 2rem;
     box-sizing: border-box;
     border: 3px solid var(--text);
@@ -76,6 +90,18 @@ body {
 
 .column:last-child {
     border-left: none; /* Remove left border on the last column */
+}
+
+.centre-border {
+    border: none;
+}
+
+.centre-border:last-child {
+    border-left: 3px solid var(--text);
+}
+
+.spacer {
+    height: 3rem;
 }
 
 .diagonal-bkg {
@@ -155,4 +181,89 @@ input:checked + .slider {
 
 input:checked + .slider:before {
     transform: translateX(40px);
+}
+
+/* TODO LIST CSS */
+.task-form {
+    text-align: center;
+}
+
+.task-form textarea {
+    font-size: 2rem;
+    border: 3px solid var(--text);
+    border-radius: 0%;
+    width: 80%;
+    resize: none;
+    margin: 2rem auto;
+    padding: 2rem;
+    color: var(--text);
+    background-color: var(--background);
+}
+
+.task-form button{
+    font-family: monospace;
+    margin: auto;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    font-size: 2rem;
+    border: 3px solid var(--text);
+    background-color: var(--background);
+    color: var(--text);
+}
+
+.task-form button:hover{
+    border: 3px solid var(--background);
+    background-color: var(--text);
+    color: var(--background);
+}
+
+.task-list {
+    /*
+    margin: 2rem auto;
+    padding: 2rem;
+    min-height: 10rem;
+    border: 3px solid var(--text);
+    */
+    margin: auto;
+}
+
+.task-list li {
+    list-style-type: none;
+    font-size: 2rem;
+    margin: 2rem;
+    justify-content: center;
+}
+
+.task-list-checkbox {
+    appearance: none;
+    border-radius: 0%;
+    outline: 3px solid var(--text);
+    width: 1rem;
+    height: 1rem;
+    background: var(--background);
+}
+
+.task-list-checkbox:checked {
+    outline: 3px solid var(--text);
+    background-color: var(--text);
+    color: var(--background);
+    accent-color: var(--text);
+}
+
+.task-list button {
+    color: var(--text);
+    border: 3px solid var(--text);
+    background-color: var(--background);
+    height: 2rem;
+    font-size: 1rem;
+    font-family: monospace;
+    font-weight: 600;
+}
+
+.task-list button:hover {
+    background-color: red;
+}
+
+.crossed-out {
+    text-decoration: line-through;
 }

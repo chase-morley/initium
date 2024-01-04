@@ -12,6 +12,37 @@
                 <h1 class="main-heading">PROJECT: Initium</h1>
                 <p class="sub-heading">Where exploration begins.</p>
                 <hr class="seperator">
+                <!-- LATEST CONTENT UPDATES -->
+                <!-- UPDATE 04-01-24 -->
+                <div class="content-update">
+                    <h2 class="content-heading">UPDATE: 04-01-24 To Do List Update.</h2>
+                    <p class="content-text">
+                        Today I added in a To Do List. I plan to make a seperate dedicated page for this, and build a main menu soon. Trust me, its on my To Do List ;).
+                        Anyway, this project was yet again aided by ChatGPT, but there was a lot more bugs in it, compared to my dark mode project. 
+                        However, I have ironed most of them out, and now I have a functioning To Do List with local storage! You can make tasks as completed and remove them.
+                        <br>
+                        Here is a couple points of interest:
+                    </p>
+                    <ul class="content-text">
+                        <li>JSON - Saving JavaScript Array to JSON. [THIS ONE IS EXCITING!!]</li>
+                        <li>Local Storage - Saving Task Elements and rendering them post refresh.</li>
+                        <li>innerHtml - Appending Child Elements for each object in JSON.</li>
+                        <li>Template Literals - Combining this with JSON is insanely powerful.</li>
+                    </ul>
+                    <p class="content-text">
+                        I am especially excited about my new knowledge on JSON objects. 
+                        Its starting to click how I can use this to implement dynamic web features. 
+                        <br>
+                        <br>
+                        Forcing myself to add even the tinest details, teaches me so much. 
+                        One example was clicking on the task to cross it out. 
+                        This required me adding an additional object to my JSON object that would give every new task a unique ID. 
+                        The parent label of each task was linked to its children who shared the same uniqe ID.
+                        This was needed to fix bugs where only the latest task would be checked of no matter which one was pressed. 
+                        The label was needed so that click the task text would also cross it out. 
+                    </p>
+                </div>
+                <!-- UPDATE: 03-01-24 -->
                 <div class="content-update">
                     <h2 class="content-heading">UPDATE: 03-01-24 Small Update.</h2>
                     <p class="content-text">
@@ -54,6 +85,42 @@
                     <p>Thanks to ChatGPT for guidance.</p>
                 </div>
             </div>
+            <div class="content-body">
+                <p>
+                    I started off by asking ChatGPT how I would implement a dark mode switch on a basic website. 
+                    It went above and beyond, coding me up all the files needed to start. 
+                    However, I needed to change the style and insert the code into already existing code. 
+                    I believe this teaches critical coding skills, it's one thing to write code, but another to read and implement existing code.
+                </p>
+                <hr class="seperator top-margin">
+            </div>
+            <div class="flex-container">
+                <div class="column diagonal-bkg">
+                    <div class="banner">
+                        <h2 class="banner-heading">PROJECT: To Do List</h2>
+                    </div>
+                </div>
+                <div class="column">
+                    <p>ToDo List with local storage. A must have for any beginner programmer to have... More like every programmer.</p>
+                </div>
+            </div>
+            <div class="spacer"></div>
+            <div class="flex-container">
+                <div class="column centre-border">
+                    <div class="todo-list">
+                        <h2 class="banner content-heading">Insert Task:</h2>
+                        <form id="task-form" class="task-form">
+                            <textarea id="task-input" type="text" placeholder="Write a task here..." required></textarea><br>
+                            <button type="submit">Add Task</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="column centre-border">
+                    <h2 class="banner content-heading">To Do List:</h2>
+                    <ul id="task-list" class="task-list"></ul>
+                </div>
+            </div>
+                
         </div>
         <script src="src/script.js"></script>
     </body>
