@@ -1,104 +1,36 @@
-document.addEventListener('DOMContentLoaded', () => {
-    //Dark Mode Elements
-    const modeSwitch = document.getElementById('modeSwitch');
-    const rootStyle = document.documentElement.style;
-
-    //ToDo List Elements
-    const taskForm = document.getElementById('task-form');
-    const taskInput = document.getElementById('task-input');
-    const taskList = document.getElementById('task-list');
-
-    //Local Storage
-    const tasks = JSON.parse(localStorage.getItem('tasks')) || []; //Task Storage
-    const idKeys = JSON.parse(localStorage.getItem('idKeys')) || []; //idKey Storage
-    const darkModeOn = JSON.parse(localStorage.getItem(''))
+document.addEventListener("DOMContentLoaded", function () {
+    const navbar = document.getElementById("navbar");
+    const toggleButton = document.getElementById("toggle-button")
+    const sidebar = document.getElementById('sidebar');
   
-    //Dark Mode
-    modeSwitch.addEventListener('change', () => {
-        document.body.classList.toggle(modeSwitch.checked);
-        //document.body.classList.toggle('dark-mode', modeSwitch.checked);
-    
-        if (modeSwitch.checked) {
-            rootStyle.setProperty('--background', '#000');
-            rootStyle.setProperty('--text', '#fff');
-            rootStyle.setProperty('--switch-off', '#000');
-            rootStyle.setProperty('--switch-on', '#fff');
+    window.addEventListener("scroll", function () {
+        if (window.scrollY > 0) {
+            navbar.style.backgroundColor = "var(--black)"; // Change the color as needed
+            navbar.style.color = "var(--white)"
+            toggleButton.style.stroke = "var(--white)"
         } else {
-            rootStyle.setProperty('--background', '#fff');
-            rootStyle.setProperty('--text', '#000');
-            rootStyle.setProperty('--switch-off', '#fff');
-            rootStyle.setProperty('--switch-on', '#000');
+            navbar.style.backgroundColor = "transparent";
+            navbar.style.color = "var(--black)"
+            toggleButton.style.stroke = "var(--black)"
         }
     });
-
-    //ToDo List
-    //Render Tasks
-    function renderTasks() {
-        taskList.innerHTML = '';
-        tasks.forEach((task, index) => {
-            const li = document.createElement('li');
-            li.innerHTML = `
-                <div class="banner">
-                <label for="${task.idKey}">
-                <input id="${task.idKey}" type="checkbox" class="task-list-checkbox" ${task.completed ? 'checked' : ''}>
-                <span ${task.completed ? 'class="crossed-out"' : ''}>${task.text}</span>
-                <br>
-                <button data-index="${index}">Remove</button>
-                </label>
-                </div>
-            `;
-            taskList.appendChild(li)
-        });
-        updateLocalStorage();
-    }
-
-    //Add New Task
-    taskForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const text = taskInput.value.trim();
-        if (text !== '') {
-            tasks.push({text, completed: false, idKey: newUniqueId()});
-            renderTasks();
-            taskInput.value = '';
-        }
-    });
-
-    //Remove Task
-    taskList.addEventListener('click', (e) => {
-        if (e.target.tagName === 'BUTTON') {
-            const index = parseInt(e.target.dataset.index);
-            tasks.splice(index, 1);
-            renderTasks();
-        }
-    });
-
-    // Toggle Task Completion
-    taskList.addEventListener('change', (e) => {
-        if (e.target.tagName === 'INPUT') {
-            const index = parseInt(e.target.parentElement.querySelector('button').dataset.index);
-            tasks[index].completed = e.target.checked;
-            renderTasks();
-        }
-    });
-
-    // Create Unique ID
-    function newUniqueId() {
-        while (true) {
-            const id = Math.random() * 10000;
-            if (idKeys.includes(id)) {
-                continue;
+    
+    function toggleSidebar() {
+        if (sidebar.style.width === '300px') {
+            sidebar.style.width = '0';
+            if (window.scrollY > 0) {
+                toggleButton.style.stroke = "var(--white)"
             } else {
-                return id;
+                toggleButton.style.stroke = "var(--black)"
             }
+        } else {
+            sidebar.style.width = '300px';
+            toggleButton.style.stroke = "var(--white)"
         }
     }
 
-    // Update Local Storage
-    function updateLocalStorage() {
-        localStorage.setItem('tasks', JSON.stringify(tasks));
-    }
+    document.getElementById('toggle-button').addEventListener('click', function() {
+        toggleSidebar();
+    });    
+});  
 
-    // Initialise Rendering
-    renderTasks();
-
-});
